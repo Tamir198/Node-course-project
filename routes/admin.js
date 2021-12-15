@@ -3,7 +3,6 @@ const path = require('path');
 const express = require('express');
 
 const rootDir = require('../util/path');
-const { propfind } = require('./shop');
 
 const router = express.Router();
 const products = [];
@@ -19,6 +18,6 @@ router.post('/add-product', (req, res, next) => {
 });
 
 module.exports = {
-routs: router,
-products : products
-}
+  routs: router,
+  products : products
+  }
