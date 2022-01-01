@@ -1,10 +1,10 @@
 const Product = require('../models/product')
 
 exports.addProductGET = (req, res, next) => {
-  res.render('add-product',{
-      pageTitle: "Add product",
-      path: '/add-product'
-    })
+  res.render('add-product', {
+    pageTitle: "Add product",
+    path: '/add-product'
+  })
 }
 
 exports.addProductPOST = (req, res, next) => {
@@ -14,9 +14,12 @@ exports.addProductPOST = (req, res, next) => {
 }
 
 exports.allProducts = (req, res, next) => {
-  res.render('shop', {
-    pageTitle:'Shop', 
-    prods: Product.getAllProducts(), 
-    docTitle: 'Shop', path:'/'
-  });
+  Product.getAllProducts((products => {
+    res.render('shop', {
+      pageTitle: 'Shop',
+      prods: products,
+      docTitle: 'Shop', path: '/'
+    });
+  })
+  )
 }
