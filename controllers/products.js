@@ -33,15 +33,6 @@ exports.showCart =  (req, res, next) => {
   }))
 }
 
-exports.checkout =  (req, res, next) => {
-  Product.getAllProducts((products => {
-    res.render('shop/product-list', {
-      pageTitle: 'productList',
-      path: '/product-list'
-    });
-  }))
-}
-
 exports.productList =  (req, res, next) => {
   Product.getAllProducts((products => {
     res.render('shop/product-list', {
@@ -52,6 +43,7 @@ exports.productList =  (req, res, next) => {
   }))
 }
 
+//TODO keep this and render checkout later
 exports.checkout =  (req, res, next) => {
   Product.adminProducts((products => {
     res.render('admin/admin-products', {
