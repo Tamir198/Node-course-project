@@ -7,7 +7,6 @@ const productsFilePath = path.join(
    );
 
 module.exports = class Product {
-
   constructor(productTitle) {
     this.productTitle = productTitle;
   }

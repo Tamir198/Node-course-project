@@ -1,10 +1,9 @@
-<%- include('./shared-layouts/header.ejs') %>
-    <link rel="stylesheet" href="/css/product.css">
-</head>
+<%- include('../shared-layouts/header.ejs') %>
+    <link rel="stylesheet" href="../css/product.css">
 
 <body>
-    <%- include('./shared-layouts/navigation.ejs') %>
-
+    <%- include('../shared-layouts/navigation.ejs') %>
+    <button>Product list UI will come here</button>
     <main>
         <% if (prods.length > 0) { %>
             <div class="grid">
@@ -31,4 +30,4 @@
             <h1>No Products Found!</h1>
         <% } %>
     </main>
-<%- include('./shared-layouts/footer.ejs') %>
+<%- include('../shared-layouts/footer.ejs') %>
