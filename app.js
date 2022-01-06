@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const adminRouts = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const startingPageRout = require('./routes/startingPage')
 
 const pageNotFoundController = require('./controllers/pageNotFound')
 
@@ -15,8 +16,12 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/admin', adminRouts);
 app.use('/shop',shopRoutes);
+
+app.use('/', startingPageRout)
+
 
 app.use(pageNotFoundController.pageNotFound);
 

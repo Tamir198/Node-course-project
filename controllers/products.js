@@ -24,14 +24,6 @@ exports.allProducts = (req, res, next) => {
   }))
 }
 
-exports.showCart =  (req, res, next) => {
-  Product.getAllProducts((products => {
-    res.render('shop/cart', {
-      pageTitle: 'Cart',
-      path: '/cart'
-    });
-  }))
-}
 
 exports.productList =  (req, res, next) => {
   Product.getAllProducts((products => {
@@ -39,6 +31,16 @@ exports.productList =  (req, res, next) => {
       pageTitle: 'productList',
       path: '/product-list',
       prods: products,
+    });
+  }))
+}
+
+
+exports.showCart =  (req, res, next) => {
+  Product.getAllProducts((products => {
+    res.render('shop/cart', {
+      pageTitle: 'Cart',
+      path: '/cart'
     });
   }))
 }
