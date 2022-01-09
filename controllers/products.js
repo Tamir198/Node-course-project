@@ -8,7 +8,14 @@ exports.addProductGET = (req, res, next) => {
 }
 
 exports.addProductPOST = (req, res, next) => {
-  const product = new Product(req.body.title);
+  console.log(req.body);
+  const body = req.body;
+  const product = new Product(
+    body.title,
+    body.imgUrl,
+    body.description,
+    body.price,
+    );
   product.saveCurrentProduct();
   res.redirect('/shop');
 }

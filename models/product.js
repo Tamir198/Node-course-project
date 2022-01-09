@@ -3,20 +3,23 @@ const path = require('path');
 
 const productsFilePath = path.join(
   path.dirname(process.mainModule.filename),
-   'data', 'products.json'
-   );
+  'data', 'products.json'
+);
 
 module.exports = class Product {
-  constructor(productTitle) {
+  constructor(productTitle, imagUrl, description, price) {
     this.productTitle = productTitle;
+    this.imagUrl = imagUrl;
+    this.description = description;
+    this.price = price;
   }
-                                    
-  saveCurrentProduct(){
+
+  saveCurrentProduct() {
     fs.readFile(productsFilePath, (err, fileContent) => {
       let products = [];
-        if(!err && fileContent.length > 0){
-          products = JSON.parse(fileContent);
-        }
+      if (!err && fileContent.length > 0) {
+        products = JSON.parse(fileContent);
+      }
 
       products.push(this);
 
@@ -26,8 +29,8 @@ module.exports = class Product {
     })
   };
 
-  static async getAllProducts(renderProduct){
-     fs.readFile(productsFilePath, (err, fileContent) => {
+  static async getAllProducts(renderProduct) {
+    fs.readFile(productsFilePath, (err, fileContent) => {
       if (err || fileContent.length < 1) {
         renderProduct([]);
         return;
