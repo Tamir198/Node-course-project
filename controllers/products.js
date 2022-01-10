@@ -1,4 +1,4 @@
-const Product = require('../models/product')
+const Product = require('../models/product');
 
 exports.addProductGET = (req, res, next) => {
   res.render('admin/add-product', {
@@ -16,7 +16,7 @@ exports.addProductPOST = (req, res, next) => {
     body.description,
     body.price,
     );
-  product.saveCurrentProduct();
+  product.saveCurrentProduct();``
   res.redirect('/shop');
 }
 
@@ -61,6 +61,16 @@ exports.checkout =  (req, res, next) => {
     });
   }))
 }
+
+exports.allOrders =  (req, res, next) => {
+  Product.getAllProducts((products => {
+    res.render('shop/orders', {
+      pageTitle: 'Prders',
+      path: '/orders'
+    });
+  }))
+}
+
 
 
 
