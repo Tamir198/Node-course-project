@@ -1,4 +1,5 @@
-.product-form {
+.product-form,btn__edit
+ {
     width: 20rem;
     max-width: 90%;
     margin: auto;
@@ -22,4 +23,13 @@
 
 .product__description {
     text-align: center;
+}
+
+.card__actions{
+  display: flex;
+  justify-content: center;
+}
+
+a{
+  text-decoration: none;
 }

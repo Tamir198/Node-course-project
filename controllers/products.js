@@ -15,9 +15,23 @@ exports.addProductPOST = (req, res, next) => {
     body.imgUrl,
     body.description,
     body.price,
-    );
-  product.saveCurrentProduct();``
+  );
+  product.saveCurrentProduct();
   res.redirect('/shop');
+}
+
+//TODO: check why this brings page not found
+exports.productDetails = async (req, res, next) => {
+  await Product.getProductById(
+    req.params.productId,
+    (product) => {
+      res.render('shop/product-info', {
+        path: '/product-list',
+        pageTitle: 'Product Info',
+        product: product
+      })
+    }
+  );
 }
 
 exports.allProducts = (req, res, next) => {
@@ -32,7 +46,7 @@ exports.allProducts = (req, res, next) => {
 }
 
 
-exports.productList =  (req, res, next) => {
+exports.productList = (req, res, next) => {
   Product.getAllProducts((products => {
     res.render('shop/product-list', {
       pageTitle: 'productList',
@@ -43,7 +57,7 @@ exports.productList =  (req, res, next) => {
 }
 
 
-exports.showCart =  (req, res, next) => {
+exports.showCart = (req, res, next) => {
   Product.getAllProducts((products => {
     res.render('shop/cart', {
       pageTitle: 'Cart',
@@ -53,7 +67,7 @@ exports.showCart =  (req, res, next) => {
 }
 
 //TODO keep this and render checkout later
-exports.checkout =  (req, res, next) => {
+exports.checkout = (req, res, next) => {
   Product.adminProducts((products => {
     res.render('admin/admin-products', {
       pageTitle: 'productList',
@@ -62,7 +76,7 @@ exports.checkout =  (req, res, next) => {
   }))
 }
 
-exports.allOrders =  (req, res, next) => {
+exports.allOrders = (req, res, next) => {
   Product.getAllProducts((products => {
     res.render('shop/orders', {
       pageTitle: 'Prders',

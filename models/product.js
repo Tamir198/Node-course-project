@@ -12,6 +12,7 @@ module.exports = class Product {
     this.imagUrl = imagUrl;
     this.description = description;
     this.price = price;
+    this.id = Math.random().toString();
   }
 
   saveCurrentProduct() {
@@ -28,6 +29,15 @@ module.exports = class Product {
       })
     })
   };
+
+  static async getProductById(productId,doSomethingWithProduct) {
+    let product;
+    await this.getAllProducts(products =>{
+      product = products.find(prod => prod.id === productId);
+      doSomethingWithProduct(product);  
+    });
+  }
+
 
   static async getAllProducts(renderProduct) {
     fs.readFile(productsFilePath, (err, fileContent) => {

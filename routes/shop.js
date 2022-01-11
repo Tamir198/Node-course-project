@@ -8,5 +8,6 @@ router.get('/cart', productsController.showCart);
 router.get('/checkout', productsController.checkout);
 router.get('/product-list', productsController.productList);
 router.get('/orders', productsController.allOrders)
+router.get('/products/:productId', productsController.productDetails);
 
 module.exports = router;
