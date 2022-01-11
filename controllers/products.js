@@ -8,7 +8,6 @@ exports.addProductGET = (req, res, next) => {
 }
 
 exports.addProductPOST = (req, res, next) => {
-  console.log(req.body);
   const body = req.body;
   const product = new Product(
     body.title,
@@ -17,7 +16,7 @@ exports.addProductPOST = (req, res, next) => {
     body.price,
   );
   product.saveCurrentProduct();
-  res.redirect('/shop');
+  res.redirect('/shop/product-list');
 }
 
 //TODO: check why this brings page not found
