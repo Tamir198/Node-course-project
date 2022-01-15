@@ -1,7 +1,19 @@
 <%- include('../shared-layouts/header.ejs') %>
 
-<body>
-  <%- include('../shared-layouts/navigation.ejs') %>
-  <button>Product Info</button>
-  <%- include('../shared-layouts/footer.ejs') %>
-</body>
+  <body>
+    <%- include('../shared-layouts/navigation.ejs') %>
+    <div class="centered">
+      <h1><%= product.productTitle %></h1>
+      <!-- TODO work on this product details -->
+      <img src= <%= product.imagUrl %> alt="Product image">
+      <p>Description: <%=product.description %></p>
+      <p>price: <%=product.price %>$</p>
+       
+      <form action="/cart" method="post">
+        <button class="btn" type="submit">Add to cart</button>
+      </form>
+      
+      <%- include('../shared-layouts/footer.ejs') %>
+    </div>
+
+  </body>
