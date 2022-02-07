@@ -19,7 +19,6 @@ exports.addProductPOST = (req, res, next) => {
   res.redirect('/shop/product-list');
 }
 
-//TODO: check why this brings page not found
 exports.productDetails = async (req, res, next) => {
   await Product.getProductById(
     req.params.productId,
@@ -56,16 +55,20 @@ exports.productList = (req, res, next) => {
 }
 
 
-exports.showCart = (req, res, next) => {
+exports.showCartGet = (req, res, next) => {
   Product.getAllProducts((products => {
     res.render('shop/cart', {
       pageTitle: 'Cart',
-      path: '/cart'
+      path: 'shop/cart'
     });
   }))
 }
 
-//TODO keep this and render checkout later
+exports.showCartPost = (req, res, next) => {
+  console.log(req.body.productId);
+  res.redirect("/shop/cart");
+}
+
 exports.checkout = (req, res, next) => {
   Product.adminProducts((products => {
     res.render('admin/admin-products', {

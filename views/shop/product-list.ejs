@@ -26,9 +26,9 @@
                   </p>
                 </div>
                 <div class="card__actions">
-                  <!-- TODO -  -->
-                  <a class="btn" href="products/<%=product.id  %>">Details</a>
-                  <button class="btn">Add to Cart</button>
+                  <a class="btn" href="shop/products/<%=product.id  %>">Details</a>
+                <%- include('../shared-layouts/add-to-cart.ejs',{product:product}) %>
+
                 </div>
               </article>
               <% } %>
