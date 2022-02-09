@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+
 const productsFilePath = path.join(
   path.dirname(process.mainModule.filename),
   'data', 'products.json'
@@ -32,10 +33,12 @@ module.exports = class Product {
 
   static async getProductById(productId,doSomethingWithProduct) {
     let product;
+
     await this.getAllProducts(products =>{
       product = products.find(prod => prod.id === productId);
       doSomethingWithProduct(product);  
     });
+    
   }
 
 
