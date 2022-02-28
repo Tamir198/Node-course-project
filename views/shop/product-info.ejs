@@ -1,0 +1,18 @@
+<%- include('../shared-layouts/header.ejs') %>
+
+  <body>
+    <%- include('../shared-layouts/navigation.ejs') %>
+      <div class="centered">
+        <h1>
+          <%= product.productTitle %>
+        </h1>
+        <img src=<%=product.imagUrl %> alt="Product image">
+        <p>Description: <%=product.description %>
+        </p>
+        <p>price: <%=product.price %>$</p>
+        
+        <%- include('../shared-layouts/add-to-cart.ejs') %>
+        <%- include('../shared-layouts/footer.ejs') %>
+      </div>
+
+  </body>
