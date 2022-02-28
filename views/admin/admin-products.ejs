@@ -3,7 +3,6 @@
 
   <body>
     <%- include('../shared-layouts/navigation.ejs') %>
-      <button>Product list UI will come here</button>
       <main>
         <% if (prods.length> 0) { %>
           <div class="grid">
@@ -26,7 +25,10 @@
                   </p>
                 </div>
                 <div class="card__actions">
-                  <button href="/admin/edit-product" class="btn btn__edit">Edit</button>
+                  <!-- TODO send user to edit product page -->
+                  <form action="/admin/edit-product" method="GET">
+                    <button href="/admin/edit-product" type="submit" class="btn btn__edit">Edit</button>
+                  </form>
                   <form action="/admin/delete-product" method="POST">
                     <button class="btn" type="submit">Delete</button>
                   </form>

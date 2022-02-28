@@ -2,7 +2,7 @@ const Cart = require('../models/cart');
 const Product = require('../models/product');
 
 exports.addProductGET = (req, res, next) => {
-  res.render('admin/add-product', {
+  res.render('admin/edit-product', {
     pageTitle: "Add product",
     path: '/add-product'
   })
@@ -18,6 +18,17 @@ exports.addProductPOST = (req, res, next) => {
   );
   product.saveCurrentProduct();
   res.redirect('/shop/product-list');
+}
+
+
+exports.editProductGET = (req, res, next) => {
+  console.log("Am i here?")
+  const isEditMode = req.query.edit;
+  res.render('admin/edit-product', {
+    pageTitle: "Edit product",
+    path: '/edit-product',
+    isEditing: isEditMode
+  })
 }
 
 exports.productDetails = async (req, res, next) => {

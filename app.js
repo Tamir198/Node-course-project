@@ -9,19 +9,15 @@ const startingPageRout = require('./routes/startingPage')
 
 const pageNotFoundController = require('./controllers/pageNotFound')
 
-
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use('/admin', adminRouts);
 app.use('/shop',shopRoutes);
-
 app.use('/', startingPageRout)
-
 
 app.use(pageNotFoundController.pageNotFound);
 
