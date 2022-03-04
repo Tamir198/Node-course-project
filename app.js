@@ -6,16 +6,19 @@ const bodyParser = require('body-parser');
 const adminRouts = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
-const pageNotFoundController = require('./controllers/pageNotFound')
+const pageNotFoundController = require('./controllers/pageNotFound');
+const productsController = require('./controllers/products');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', productsController.allProducts);
+
 app.use('/admin', adminRouts);
-app.use('/shop',shopRoutes);
+app.use('/shop', shopRoutes);
 
 app.use(pageNotFoundController.pageNotFound);
 
