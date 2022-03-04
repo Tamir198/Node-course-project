@@ -1,21 +1,25 @@
 const path = require('path');
-
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 
-const app = express();
-
-const adminRoutes = require('./routes/admin');
+const adminRouts = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
-app.use(bodyParser.urlencoded({extended: false}));
+const pageNotFoundController = require('./controllers/pageNotFound');
+const productsController = require('./controllers/products');
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminRoutes);
-app.use(shopRoutes);
+app.get('/', productsController.allProducts);
 
-app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-});
+app.use('/admin', adminRouts);
+app.use('/shop', shopRoutes);
+
+app.use(pageNotFoundController.pageNotFound);
 
 app.listen(3000);
